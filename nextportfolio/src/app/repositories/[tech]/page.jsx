@@ -4,8 +4,11 @@ import RepositoryCard from '../../components/RepositoryCard';
 
 async function fetchRepoData(tech) {
   const endpoint = `https://api.github.com/search/repositories?q=user:A-A-Larson+topic:${tech}`;
+  // Static export: data is fixed at build time. GITHUB_TOKEN (set in CI) avoids the
+  // 60 req/hr unauthenticated rate limit.
+  const token = process.env.GITHUB_TOKEN;
   const res = await fetch(endpoint, {
-    next: { revalidate: 60 },
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
   });
   if (!res.ok) {
     throw new Error('Failed to fetch repository data');
