@@ -1,4 +1,4 @@
-import BodyImg from '../img/BlueshirtV5HSave.png';
+import BodyImg from '../img/BlueshirtV5HSave.webp';
 import HandsLight from '../img/HandsUWlbg.png';
 import HandsDark from '../img/HandsUWdbg.png';
 import LHand from '../img/LHand.png';
@@ -22,8 +22,8 @@ export default function Landing() {
             
             <Image
               className='bodyLayer'                
-              width={3024}
-              height={1500}
+              width={1900}
+              height={942}
               src={BodyImg}   
               priority={true}  
               alt='Man with hands overlapping the top of the webpage as if he is holding onto it'
