@@ -8,6 +8,8 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");
+    // Read localStorage after mount to avoid an SSR hydration mismatch.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (theme === "dark") setDarkMode(true);
   }, []);
 
