@@ -1,8 +1,8 @@
 import BodyImg from '../img/BlueshirtV5HSave.webp';
-import HandsLight from '../img/HandsUWlbg.png';
-import HandsDark from '../img/HandsUWdbg.png';
-import LHand from '../img/LHand.png';
-import RHand from '../img/RHand.png';
+import HandsLight from '../img/HandsUWlbg.webp';
+import HandsDark from '../img/HandsUWdbg.webp';
+import LHand from '../img/LHand.webp';
+import RHand from '../img/RHand.webp';
 import Image from 'next/image';
 import CallToAction from './CallToAction';
 // import Carousel from '../components/Carousel';
