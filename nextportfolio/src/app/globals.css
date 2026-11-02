@@ -223,17 +223,10 @@ section {
 .aboutLayout {
   display: grid;
   gap: 1em;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: "gridH1   gridH1"
-                       "grid4    grid4"
-                       "grid1    grid1"
-                       "grid2    grid2"
-                       "grid3    grid3"
-}
-
-.aboutLayout p {
-  text-align: justify;
-  line-height: 28px;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "gridH1"
+                       "grid4"
+                       "timeline"
 }
 
 .aboutH2 {
@@ -244,34 +237,136 @@ section {
   text-align: center;
 }
 
-.about1 {
-  grid-area: grid1;
+.aboutTimeline {
+  grid-area: timeline;
 }
 
-.aboutP1 {
-  padding-top: 1em;
+.timeline {
+  position: relative;
+  list-style: none;
+  margin: 0 0 0 0.5rem;
+  padding: 0;
+  border-left: 2px solid color-mix(in srgb, currentColor 35%, transparent);
 }
 
-.about2 {
-  grid-area: grid2;
+.timelineItem {
+  position: relative;
+  padding: 0 0 1rem 1.75rem;
 }
 
-.aboutP2 {
-  padding-top: 1em;
+.timelineItem:last-child {
+  padding-bottom: 0;
 }
 
-.about3 {
-  grid-area: grid3;
+.timelineMarker {
+  position: absolute;
+  top: 0.35rem;
+  left: -0.6rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
 }
 
-.aboutP3 {
-  padding-top: 1em;
+.timelineWhen {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.75;
 }
 
-.aboutH3 {
+.timelineTitle {
   font-size: 1.5rem;
   font-weight: 700;
-  padding-top: .5em;
+  line-height: 1.2;
+}
+
+.timelineOrg {
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.timelineSummary {
+  padding-top: 0.5em;
+  line-height: 1.75rem;
+}
+
+.timelineTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 0 0;
+}
+
+.timelineTag {
+  border-radius: 999px;
+  padding: 0.1rem 0.75rem;
+  font-size: 0.9rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .timelineItem {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .timelineItem-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Wide screens: center line with entries alternating left and right, one per row
+   (the opposite side of each entry stays empty). */
+@media (min-width: 768px) {
+  .timeline {
+    margin: 0;
+    border-left: none;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+    background: color-mix(in srgb, currentColor 35%, transparent);
+  }
+
+  .timelineItem {
+    width: 50%;
+    padding: 0 2rem 1rem 0;
+    text-align: right;
+  }
+
+  .timelineItem:nth-child(even) {
+    margin-left: 50%;
+    padding: 0 0 1rem 2rem;
+    text-align: left;
+  }
+
+  .timelineItem:last-child {
+    padding-bottom: 0;
+  }
+
+  .timelineItem .timelineMarker {
+    left: auto;
+    right: -0.5rem;
+  }
+
+  .timelineItem:nth-child(even) .timelineMarker {
+    left: -0.5rem;
+    right: auto;
+  }
+
+  .timelineItem:nth-child(odd) .timelineTags {
+    justify-content: flex-end;
+  }
 }
 
 .aboutImg {
@@ -1037,10 +1132,10 @@ section {
     padding-top: 3rem;
     display: grid;
     gap: 1em;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: "gridH1   gridH1"
-                         "grid1    grid3"
-                         "grid2    grid4"
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "gridH1"
+                         "grid4"
+                         "timeline"
   }
 
   .techHead {
@@ -1141,20 +1236,18 @@ section {
     padding-top: 3rem;
     display: grid;
     justify-content: center;
-    align-items: center;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: "gridH1   gridH1"
-                         "grid1    grid4 "
-                         "grid2    grid4 "
-                         "grid3    grid4"
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "gridH1"
+                         "grid4"
+                         "timeline"
   }
 
   .aboutImg {
     grid-area: grid4;
-    height: 90vh;
+    height: 55vh;
     width: auto;
     object-fit: contain;
-    justify-self: flex-end;
+    justify-self: center;
     align-self: end;
   }
  
