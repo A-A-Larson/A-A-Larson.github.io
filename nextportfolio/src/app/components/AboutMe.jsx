@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import About from '../img/aboutbust3.png';
+import About from '../img/aboutbust3.webp';
 
 export default function AboutMe() {
     
@@ -48,8 +48,8 @@ export default function AboutMe() {
             <Image
               className='aboutImg'
               src={About}  
-              width={663}
-              height={695}
+              width={1079}
+              height={1592}
               alt='A profile picture of Andrew Larson'
             />
 
