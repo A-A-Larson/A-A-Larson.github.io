@@ -1,4 +1,4 @@
-# CLAUDE.md
+﻿# CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
@@ -6,9 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Run from `nextportfolio/` (the git root is its parent, so paths in git are prefixed `nextportfolio/`).
 
-- `npm run dev` — dev server at http://localhost:3000
-- `npm run build` — static export to `out/` (`output: 'export'`); `npm start` does not apply
-- `npm run lint` — `eslint src` (ESLint 9 flat config in `eslint.config.mjs`, extends `eslint-config-next/core-web-vitals`). `next lint` no longer exists in Next 16.
+- `npm run dev` â€” dev server at http://localhost:3000
+- `npm run build` â€” static export to `out/` (`output: 'export'`); `npm start` does not apply
+- `npm run lint` â€” `eslint src` (ESLint 9 flat config in `eslint.config.mjs`, extends `eslint-config-next/core-web-vitals`). `next lint` no longer exists in Next 16.
 
 No test framework configured.
 
@@ -24,10 +24,11 @@ Hosted on GitHub Pages at https://a-a-larson.github.io, repo `A-A-Larson/A-A-Lar
 
 Single-page personal portfolio, Next.js 16 App Router, plain JavaScript (`.jsx`, no TypeScript). Source lives under `src/app/`; `@/*` alias maps to `src/*` (see `jsconfig.json`).
 
-- `layout.jsx` — root layout. Wraps everything in `ThemeProvider`, renders `NavButton` globally, sets fonts via `font/fonts.js` CSS variables.
-- `page.jsx` — marked `'use client'`. Composes the home page from section components in `components/` (Landing, NavHeader, AboutMe, Tech, Project, ApiDemo, Footer2). Section layout classes (`mainGrid`, `landingSection`, etc.) are defined in `globals.css`, not Tailwind.
-- `repositories/[tech]/page.jsx` — async server component, built once at build time. Queries the GitHub search API for repos of user `A-A-Larson` by topic (sends `GITHUB_TOKEN` when set, to avoid the 60 req/hr unauthenticated limit), fetches each repo's raw README, extracts the first markdown image as card thumbnail, renders `RepositoryCard`. Data only refreshes on rebuild (nightly workflow). A failed GitHub fetch throws and fails the build. Valid `tech` values are hardcoded in `generateStaticParams`; `components/Tech.jsx` links to the same list. Adding a tech means updating both, plus the GitHub repo topic.
-- `components/ApiDemo.jsx` — client-side VIN decoder calling the NHTSA vPIC API directly from the browser.
+- `layout.jsx` â€” root layout. Wraps everything in `ThemeProvider`, renders `NavButton` globally, sets fonts via `font/fonts.js` CSS variables.
+- `page.jsx` â€” marked `'use client'`. Composes the home page from section components in `components/` (Landing, NavHeader, AboutMe, Work, ApiDemo, Footer2). Section layout classes (`mainGrid`, `landingSection`, etc.) are defined in `globals.css`, not Tailwind.
+- `components/Work.jsx` + `data/work.js` â€” the "What I Can Do" section (capability cards, Hand-coded repos, AI-assisted repos). All text lives in `data/work.js`; each repo has `repo` (GitHub name, used for the link) and `title` (card text), so renaming a card never needs a GitHub rename. No GitHub API calls at build time. The AI-assisted cards have empty `aiHelped`/`owned` fields; the labelled blocks stay hidden until filled.
+- `components/Timeline.jsx` + `data/timeline.js` â€” About Me career timeline, newest first.
+- `components/ApiDemo.jsx` â€” client-side VIN decoder calling the NHTSA vPIC API directly from the browser.
 
 ### Theming
 
@@ -35,4 +36,4 @@ Dark mode is class-based (`darkMode: 'class'` in `tailwind.config.js`). `context
 
 ### Styling
 
-Mix of Tailwind utilities and hand-written classes in `globals.css` (grid areas, scroll-in animations like `column3-grid-animation` triggered by `react-intersection-observer`). Tailwind `xs` breakpoint = 330px.
+Mix of Tailwind utilities and hand-written classes in `globals.css` (grid areas, scroll-in animations triggered by `react-intersection-observer` (e.g. the `workCapVisible` stagger and icon draw-in in the Work section, gated by `prefers-reduced-motion`)). Tailwind `xs` breakpoint = 330px.

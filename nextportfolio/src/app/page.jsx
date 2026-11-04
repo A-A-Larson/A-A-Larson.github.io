@@ -2,8 +2,7 @@
 import Landing from "./components/Landing";
 import NavHeader from './components/NavHeader';
 import AboutMe from './components/AboutMe';
-import Project from './components/Project';
-import Tech from './components/Tech';
+import Work from './components/Work';
 import ApiDemo from "./components/ApiDemo";
 import Footer2 from './components/Footer2';
 
@@ -20,12 +19,9 @@ export default function Home() {
         <section className='aboutSection bg-lightBG dark:bg-darkBG' id="Scroll-Location">
           <AboutMe />
         </section>
-        <section className='techSection bg-lightBG dark:bg-darkBG'> 
-          <Tech/>                      
-        </section> 
-        <section className='projectSection bg-lightBG dark:bg-darkBG'>          
-          <Project/>
-        </section>                   
+        <section className='workSection bg-lightBG dark:bg-darkBG' id='what-i-can-do'>
+          <Work/>
+        </section>
         <section className="APIDemoSection bg-lightBG dark:bg-darkBG">
           <ApiDemo/>
         </section>
