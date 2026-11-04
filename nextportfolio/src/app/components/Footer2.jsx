@@ -27,15 +27,31 @@ export default function Footer() {
             <div className='footer-content-container 
               text-lightHdrClr '>
               <div className='footer-icon-wrapper'>      
-                <div className='footer-icon'>
+                <a
+                  className='footer-icon'
+                  href='https://www.linkedin.com/in/andrew-larson-0bb59b218'
+                  aria-label='LinkedIn'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
                   <FaLinkedin size={40} />LinkedIn
-                </div>
-                <div className='footer-icon'>
+                </a>
+                <a
+                  className='footer-icon'
+                  href='https://github.com/A-A-Larson'
+                  aria-label='GitHub'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
                   <FaGithub size={40} />GitHub
-                </div>
-                <div className='footer-icon'>
+                </a>
+                <a
+                  className='footer-icon'
+                  href='mailto:drewlars83@gmail.com'
+                  aria-label='Email'
+                >
                   <IoIosMail size={40} />Email
-                </div>                          
+                </a>                          
               </div>
               <div className='copyright-content'>
                 &#169;2024 Andrew Larson

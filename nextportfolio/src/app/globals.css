@@ -1152,6 +1152,11 @@ section {
   letter-spacing: .05em;
 }
 
+a.footer-icon {
+  color: inherit;
+  text-decoration: none;
+}
+
 .footer-icon:hover {  
   transform: rotateX(60deg);  
 }
