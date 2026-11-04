@@ -83,20 +83,20 @@ export const handCoded = {
     ),
     item(
       '2ndAngular',
-      '2ndAngular',
+      'Angular Frontend Exercise',
       'A sandbox for practicing Angular tools, libraries, and common design patterns and architecture.',
       ['Angular', 'TypeScript', 'Tailwind']
     ),
     item(
       'Typescript_Final',
-      'Typescript_Final',
+      'React Frontend Exercise',
       'A front end built with React and TypeScript, using data from an API.',
       ['React', 'TypeScript', 'Tailwind']
     ),
     item('full-stack-app', 'full-stack-app', 'A full stack final project focused on PHP and SQL.', ['PHP', 'SQL']),
     item(
       'PythonAPI-FastAPI',
-      'PythonAPI-FastAPI',
+      'PythonAPI-FastAPI Exercise',
       'An API built with the FastAPI framework, backed by SQL.',
       ['Python', 'FastAPI', 'SQL']
     ),
@@ -116,14 +116,14 @@ export const aiAssisted = {
     }),
     item(
       'flutter_boilerplate',
-      'flutter_boilerplate',
+      'Flutter Boilerplate',
       'Boilerplate for a Flutter mobile project, with a landing page, log in, and routing with a bottom bar.',
       ['Flutter', 'Dart'],
       { aiHelped: '', owned: '' }
     ),
     item(
       'Web-Scraper',
-      'Web-Scraper',
+      'PDF Scraping Budget Tool',
       'A tool that scrapes bank account statements and retrieves line items for tracking.',
       ['Python'],
       { aiHelped: '', owned: '' }
