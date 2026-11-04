@@ -23,13 +23,13 @@ export const capabilities = [
     icon: 'ui',
     title: 'Build interfaces',
     desc: 'Responsive, accessible front ends in React, Angular, and Flutter.',
-    proof: 'this portfolio, Typescript_Final, 2ndAngular',
+    proof: 'this portfolio, React Frontend Exercise, Angular Frontend Exercise',
   },
   {
     icon: 'data',
     title: 'Connect data and APIs',
     desc: 'Wire interfaces to REST APIs, SQL databases, and Python or PHP back ends.',
-    proof: 'the VIN decoder demo, PythonAPI-FastAPI, full-stack-app',
+    proof: 'the VIN decoder demo, PythonAPI-FastAPI Exercise, full-stack-app',
   },
   {
     icon: 'test',
@@ -41,7 +41,7 @@ export const capabilities = [
     icon: 'ai',
     title: 'Work with AI',
     desc: 'Design AI-assisted workflows, and decide what to delegate and what to own.',
-    proof: 'Build-A-Guild, flutter_boilerplate, Web-Scraper',
+    proof: 'Build-A-Guild, Flutter Boilerplate, PDF Scraping Budget Tool',
   },
   {
     icon: 'ship',
