@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import About from '../img/aboutbust3.webp';
+import About from '../img/Blackshirt.webp';
 import Timeline from './Timeline';
 import timeline from '../data/timeline';
 

@@ -1,4 +1,4 @@
-import BodyImg from '../img/BlueshirtV5HSave.webp';
+import BodyImg from '../img/henley.webp';
 import HandsLight from '../img/HandsUWlbg.webp';
 import HandsDark from '../img/HandsUWdbg.webp';
 import LHand from '../img/LHand.webp';
