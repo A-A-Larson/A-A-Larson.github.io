@@ -1,0 +1,34 @@
+{
+    "01-endpoints.png":  {
+                             "caption":  "Endpoint list",
+                             "alt":  "The Swagger documentation page for the FastAPI project, listing four endpoints: GET /student, GET /students, POST /students/mod and POST /students/create, above the data schemas."
+                         },
+    "02-get-student.png":  {
+                               "caption":  "GET /student",
+                               "alt":  "The GET /student endpoint expanded in the Swagger documentation."
+                           },
+    "03-get-students.png":  {
+                                "caption":  "GET /students",
+                                "alt":  "The GET /students endpoint expanded in the Swagger documentation."
+                            },
+    "04-post-students-mod.png":  {
+                                     "caption":  "POST /students/mod",
+                                     "alt":  "The POST /students/mod endpoint expanded in the Swagger documentation."
+                                 },
+    "05-post-students-create.png":  {
+                                        "caption":  "POST /students/create",
+                                        "alt":  "The POST /students/create endpoint expanded in the Swagger documentation, showing its example JSON request body."
+                                    },
+    "06-get-students-response.webp":  {
+                                          "caption":  "GET /students response",
+                                          "alt":  "The GET /students endpoint in Swagger after running Try it out: a 200 response whose JSON body lists a student with name, email, phone, address and a list of enrolled classes."
+                                      },
+    "07-get-student-response.webp":  {
+                                         "caption":  "GET /student by ID",
+                                         "alt":  "The GET /student endpoint in Swagger with student_id set to 1 and a 200 response showing that one student\u0027s JSON record, including their enrolled classes."
+                                     },
+    "08-html-test-page.webp":  {
+                                   "caption":  "HTML test page",
+                                   "alt":  "The project\u0027s plain HTML GET test page with a User ID field set to 1, an endpoint field set to \u0027student\u0027, a green Submit button and the raw JSON response for one student printed below."
+                               }
+}

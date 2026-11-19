@@ -1,0 +1,18 @@
+{
+    "01-plant-finder.webp":  {
+                                 "caption":  "Plant Finder",
+                                 "alt":  "Plant Finder, a React app with a search box and four result cards: Gala Apple, Honeyberry, Paw Paw and Sea Buckthorn."
+                             },
+    "02-home.webp":  {
+                         "caption":  "Home",
+                         "alt":  "The Plant Finder home page: a green header, the heading \u0027Find your next plant\u0027, a short description, and an empty search box with a Search button."
+                     },
+    "03-search-results.webp":  {
+                                   "caption":  "Search results",
+                                   "alt":  "Plant Finder after searching for \u0027apple\u0027: the Search Results heading with \u00271 plants found\u0027 and a single card for Gala Apple, ID #1."
+                               },
+    "04-plant-details.webp":  {
+                                  "caption":  "Plant details",
+                                  "alt":  "The Gala Apple details page: a photo of a young apple tree, the plant\u0027s description and tags, and Preparation and Maintenance panels listing size, growth rate, sunlight, watering and pruning months."
+                              }
+}

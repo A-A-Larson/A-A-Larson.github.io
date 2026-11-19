@@ -1,0 +1,14 @@
+{
+  "01-home-and-free-build.webp": {
+    "caption": "Home and Free Build setup",
+    "alt": "Two phone screens. Left: the Build A Guild home screen with a hand-drawn star-and-orbit logo on graph paper and Campaign, Free Build and Leaderboard buttons. Right: the Free Build setup screen with a grid of selectable star plants, goal chips such as Calories and Biomass, and a Plant it button."
+  },
+  "02-garden-board-and-result.webp": {
+    "caption": "Garden board and round result",
+    "alt": "Two phone screens. Left: the garden board in year 3 of 35 with an apple tree, hazelnut and blueberry growing, a dead sunflower and garlic, and yearly stat totals above. Right: a round result screen reading The star died of drought, with stat totals and a guild roster of five plants."
+  },
+  "03-plant-guide.webp": {
+    "caption": "Plant Guide",
+    "alt": "Two phone screens. Left: the Plant Guide with a search box, layer and function filters, and a grid of plant cards showing height, width, lifespan, calories, nitrogen and biomass. Right: the Hazelnut detail sheet with a botanical illustration and a list of its traits."
+  }
+}

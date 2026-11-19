@@ -1,0 +1,22 @@
+{
+  "01-category-keywords.webp": {
+    "caption": "Category keywords",
+    "alt": "The Category Keywords page with one keyword text box per budget category, grouped into fixed bills, groceries and income, filled with sample merchant names."
+  },
+  "02-import-statement.webp": {
+    "caption": "Import a statement",
+    "alt": "The Import Statement form with a sample statement PDF chosen, October selected as the month, 2025 as the year, and a Preview button."
+  },
+  "03-review-totals.webp": {
+    "caption": "Totals block preview",
+    "alt": "The Review page for October 2025 showing the plain-text totals block to be appended, with fixed bills, groceries, gross expenses, partner transfer, net income and net profit lines."
+  },
+  "04-review-transactions.webp": {
+    "caption": "Review transactions",
+    "alt": "A table of parsed sample transactions with dates, descriptions, amounts and category dropdowns, with two unmatched rows highlighted in yellow and Recalculate and Confirm and append buttons below."
+  },
+  "05-confirmed.webp": {
+    "caption": "Block appended",
+    "alt": "The Appended confirmation page showing the October 2025 totals block that was written to the budget history text file."
+  }
+}

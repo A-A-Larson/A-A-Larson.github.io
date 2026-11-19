@@ -1,12 +1,16 @@
 'use client';
+import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
+import { CardSlides, SlideshowProvider, SlideshowToggle, useHoldHandlers } from './Slideshow';
 import {
   intro,
   capabilities,
   tools,
+  featured,
   handCoded,
   aiAssisted,
   githubProfile,
+  projectPath,
 } from '../data/work';
 
 // Icon glyphs (24x24 viewBox), stroked in the tile's glyph color.
@@ -84,9 +88,9 @@ function Capability({ cap, index }) {
   );
 }
 
-function Tags({ tags }) {
+function Tags({ tags, label = 'Technologies' }) {
   return (
-    <ul className='workTags' aria-label='Technologies'>
+    <ul className='workTags' aria-label={label}>
       {tags.map((tag) => (
         <li key={tag} className='workTag'>
           {tag}
@@ -99,39 +103,82 @@ function Tags({ tags }) {
 function RepoCard({ repo, variant, index }) {
   const isAi = variant === 'ai';
   const [revealRef, revealClass, revealStyle] = useReveal(index);
+  const holdHandlers = useHoldHandlers();
   return (
     <li
       ref={revealRef}
       className={`workRepo ${isAi ? 'workRepoAi' : 'workRepoHand'} ${revealClass}`}
       style={revealStyle}
+      {...holdHandlers}
     >
-      <h4 className='workRepoTitle'>
-        <a href={repo.url} target='_blank' rel='noopener noreferrer' className='workLink'>
-          {repo.title}
-        </a>
-      </h4>
-      <p>{repo.desc}</p>
-      {repo.note && <p className='workNote'>{repo.note}</p>}
-      {isAi && repo.aiHelped && (
-        <div>
-          <p className='workLabel'>How AI helped</p>
-          <p className='workMuted'>{repo.aiHelped}</p>
-        </div>
-      )}
-      {isAi && repo.owned && (
-        <div>
-          <p className='workLabel'>What I owned</p>
-          <p className='workMuted'>{repo.owned}</p>
-        </div>
-      )}
-      <Tags tags={repo.tags} />
+      <CardSlides shots={repo.screenshots} sizes='(min-width: 768px) 340px, 100vw' className='workCardSlides' />
+      <div className='workRepoBody'>
+        <h4 className='workRepoTitle'>
+          <Link href={projectPath(repo.slug)} className='workCardLink'>
+            {repo.title}
+          </Link>
+        </h4>
+        <p>{repo.desc}</p>
+        {repo.note && <p className='workNote'>{repo.note}</p>}
+        {isAi && repo.aiHelped && (
+          <div>
+            <p className='workLabel'>How AI helped</p>
+            <p className='workMuted'>{repo.aiHelped}</p>
+          </div>
+        )}
+        {isAi && repo.owned && (
+          <div>
+            <p className='workLabel'>What I owned</p>
+            <p className='workMuted'>{repo.owned}</p>
+          </div>
+        )}
+        <Tags tags={repo.tags} />
+        <span className='workGo' aria-hidden='true'>
+          View details →
+        </span>
+      </div>
     </li>
+  );
+}
+
+function FeaturedProject() {
+  const [revealRef, revealClass, revealStyle] = useReveal(0);
+  const holdHandlers = useHoldHandlers();
+  return (
+    <section id={featured.sectionId} aria-labelledby='featured-heading' className='workGroup'>
+      <div className='workGroupHead'>
+        <div className='workGroupTitleRow'>
+          <h3 id='featured-heading' className='workGroupTitle'>
+            Featured project
+          </h3>
+          <span className='workBadge workBadgeAi'>{featured.badge}</span>
+          <SlideshowToggle />
+        </div>
+        <p className='workBlurb'>{featured.blurb}</p>
+      </div>
+      <article ref={revealRef} className={`workFeatured ${revealClass}`} style={revealStyle} {...holdHandlers}>
+        <CardSlides shots={featured.screenshots} sizes='(min-width: 768px) 580px, 100vw' className='workFeaturedSlides' />
+        <div className='workFeaturedBody'>
+          <p className='workEyebrow'>{featured.eyebrow}</p>
+          <h4 className='workRepoTitle workFeaturedTitle'>
+            <Link href={projectPath(featured.slug)} className='workCardLink'>
+              {featured.title}
+            </Link>
+          </h4>
+          <p>{featured.pitch}</p>
+          <Tags tags={featured.chips} label='Parts of the project' />
+          <span className='workGo' aria-hidden='true'>
+            Read the case study →
+          </span>
+        </div>
+      </article>
+    </section>
   );
 }
 
 function RepoGroup({ group, id, variant }) {
   return (
-    <section aria-labelledby={id} className='workGroup'>
+    <section id={group.sectionId} aria-labelledby={id} className='workGroup'>
       <div className='workGroupHead'>
         <div className='workGroupTitleRow'>
           <h3 id={id} className='workGroupTitle'>
@@ -151,6 +198,14 @@ function RepoGroup({ group, id, variant }) {
 }
 
 export default function Work() {
+  return (
+    <SlideshowProvider>
+      <WorkContent />
+    </SlideshowProvider>
+  );
+}
+
+function WorkContent() {
   return (
     <div className='workWrap text-lightHdrClr dark:text-darkHdrClr'>
       <header className='workHeader'>
@@ -176,6 +231,7 @@ export default function Work() {
         </div>
       </section>
 
+      <FeaturedProject />
       <RepoGroup group={handCoded} id='hand-coded-heading' variant='hand' />
       <p className='workAll'>
         <a href={githubProfile} target='_blank' rel='noopener noreferrer' className='workLink'>

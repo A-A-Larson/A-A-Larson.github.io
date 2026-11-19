@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "shots": "node scripts/generate-screenshots.mjs",
+    "predev": "npm run shots",
     "dev": "next dev",
+    "prebuild": "npm run shots",
     "build": "next build",
     "start": "next start",
     "lint": "eslint src"

@@ -1,0 +1,14 @@
+{
+    "01-plant-explorer.webp":  {
+                                   "caption":  "Plant Explorer",
+                                   "alt":  "Plant Explorer, an Angular app that browses the Trefle botanical database: page buttons above a grid of plant cards with photos, common names and Latin names."
+                               },
+    "02-page-two.webp":  {
+                             "caption":  "Page two of results",
+                             "alt":  "Plant Explorer showing the second page of plants: a green header, page buttons, and a grid of plant photo cards including Evergreen Oak, Common Nettle, Barnyard Grass, Narrow-Leaf Plantain, Milfoil, Dutch Clover, Yorkshire-Fog and Creeping Buttercup."
+                         },
+    "03-last-page.webp":  {
+                              "caption":  "Last page",
+                              "alt":  "Plant Explorer on its last page of results, with the Next button greyed out above cards for Elder, Purple Moor Grass, Sycamore Maple, Black Thistle, Cinquefoil, Cow-Parsley, Mountain Geranium and Smooth Meadow Grass."
+                          }
+}

@@ -1,0 +1,18 @@
+{
+    "01-landing.webp":  {
+                            "caption":  "Landing section",
+                            "alt":  "The landing section of this portfolio: a photo of Andrew Larson holding a sign that reads \u0027Hi, I\u0027m Andrew Larson\u0027."
+                        },
+    "02-about-me.webp":  {
+                             "caption":  "About me",
+                             "alt":  "The About Me section of this portfolio: a navigation bar with Home, GitHub, LinkedIn, Contact Me and On/Off, a portrait photo, and the start of a timeline whose newest entry is \u0027Learning new skills and building AI workflows\u0027."
+                         },
+    "03-what-i-can-do.webp":  {
+                                  "caption":  "What I can do",
+                                  "alt":  "The What I Can Do section: six cards titled Build interfaces, Connect data and APIs, Test and clarify, Work with AI, Ship and maintain, and Improve how teams work, above a row of tool tags such as React, Next.js and Python."
+                              },
+    "04-hand-coded-projects.webp":  {
+                                        "caption":  "Hand-coded projects",
+                                        "alt":  "The Hand-coded section with a \u0027No AI assistance\u0027 label and project cards for This portfolio, Angular Frontend Exercise, React Frontend Exercise and PythonAPI-FastAPI Exercise, each with a screenshot, short description and a View details link."
+                                    }
+}

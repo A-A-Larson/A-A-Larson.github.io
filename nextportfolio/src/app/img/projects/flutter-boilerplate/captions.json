@@ -1,0 +1,10 @@
+{
+  "01-landing-and-login.webp": {
+    "caption": "Landing page and log in",
+    "alt": "Two phone screens. Left: the starter app landing page with a centered Welcome heading and a Get Started button. Right: the Login screen with email and password fields, a Login button and a Don't have an account? Register link."
+  },
+  "02-validation-and-register.webp": {
+    "caption": "Form validation and registration",
+    "alt": "Two phone screens. Left: the Login screen after submitting empty fields, with both inputs outlined in red and messages reading Please enter your email and This field is required. Right: the Register screen with email, password and confirm password fields, a hint that passwords need 8 or more characters, and a Register button."
+  }
+}

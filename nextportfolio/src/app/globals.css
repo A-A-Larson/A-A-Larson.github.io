@@ -29,6 +29,12 @@ html {
   font-family: inter, system-ui, sans-serif;
 }
 
+/* Tailwind's dark: variant only matches descendants of .dark, so the dark:bg-darkBG class on <html>
+   itself never applies. Set the dark page background here instead. */
+html.dark {
+  background-color: var(--backgroundDark);
+}
+
 body {
   position: relative;
 }
@@ -625,6 +631,8 @@ section {
   display: flex;
   flex-direction: column;
   gap: 28px;
+  /* "Back to work" scrolls a group to the top: clear the sticky nav bar (0 on small screens) plus some air. */
+  scroll-margin-top: calc(var(--stickyNavH, 0px) + 24px);
 }
 
 .workGroupHead {
@@ -673,14 +681,79 @@ section {
 }
 
 .workRepo {
+  position: relative;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  line-height: 1.6;
+  font-size: 0.975rem;
+}
+
+.workRepoBody {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 12px;
   padding: 24px;
-  border-radius: 12px;
-  line-height: 1.6;
-  font-size: 0.975rem;
+}
+
+.workCardSlides {
+  border-bottom: 1px solid var(--workBorder);
+}
+
+/* Screenshot slideshow (cards and detail page): stacked images that cross-fade. */
+.slides {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--workTint);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.slideActive {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide {
+    transition: none;
+  }
+}
+
+.workSlideToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  padding: 4px 12px;
+  border: 1px solid var(--workBorder);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--workMuted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.workSlideToggle:hover {
+  background: var(--workTint);
+}
+
+.workSlideToggle:focus-visible {
+  outline: 3px solid var(--workLink);
+  outline-offset: 2px;
 }
 
 .workRepoHand {
@@ -689,9 +762,12 @@ section {
 }
 
 .workRepoAi {
-  gap: 14px;
   background: var(--workTint);
   border: 2px solid var(--workAiBorder);
+}
+
+.workRepoAi .workRepoBody {
+  gap: 14px;
 }
 
 .workRepoTitle {
@@ -703,6 +779,81 @@ section {
 .workLink {
   color: var(--workLink);
   text-underline-offset: 3px;
+}
+
+/* Whole-card link: the title link stretches over the card, so the card is one tab stop. */
+.workCardLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.workCardLink::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.workCardLink:focus-visible {
+  outline: none;
+}
+
+.workCardLink:focus-visible::after {
+  outline: 3px solid var(--workLink);
+  outline-offset: -3px;
+  border-radius: 12px;
+}
+
+.workGo {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--workLink);
+}
+
+.workEyebrow {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--workMuted);
+}
+
+/* Featured project card: image on the left, text on the right; stacked on narrow screens. */
+.workFeatured {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  border: 1px solid var(--workBorder);
+  border-radius: 12px;
+  box-shadow: var(--workShadow);
+  overflow: hidden;
+  line-height: 1.6;
+}
+
+.workFeaturedSlides {
+  border-right: 1px solid var(--workBorder);
+}
+
+.workFeaturedBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  padding: 28px;
+}
+
+.workFeaturedTitle {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 720px) {
+  .workFeatured {
+    grid-template-columns: 1fr;
+  }
+
+  .workFeaturedSlides {
+    border-right: 0;
+    border-bottom: 1px solid var(--workBorder);
+  }
 }
 
 .workLink:hover {
@@ -830,6 +981,316 @@ section {
 }
 
 /* WHAT I CAN DO END */
+
+/* PROJECT DETAIL PAGE START (/work/[slug]/). Reuses the .workWrap palette. */
+.projPage {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.projDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+.projDetail h1,
+.projDetail h2,
+.projDetail h3,
+.projDetail p,
+.projDetail dl,
+.projDetail dd {
+  margin: 0;
+}
+
+.projTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.projThemeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--workBorder);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.projThemeBtn:hover {
+  background: var(--workTint);
+}
+
+.projThemeBtn:focus-visible {
+  outline: 3px solid var(--workLink);
+  outline-offset: 2px;
+}
+
+.projHead {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.projTitle {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  line-height: 1.1;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+.projLede {
+  max-width: 62ch;
+  font-size: 1.125rem;
+}
+
+.projBtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.projBtn {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 8px;
+  background: var(--workBadgeBg);
+  color: var(--workBadgeText);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.projBtn:hover {
+  opacity: 0.88;
+}
+
+/* Detail-page slideshow */
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+}
+
+.carouselSlides {
+  border: 1px solid var(--workBorder);
+  border-radius: 12px;
+}
+
+.carouselBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 12px;
+}
+
+.carouselBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--workBorder);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.carouselBtn:hover {
+  background: var(--workTint);
+}
+
+.carouselBtn:focus-visible,
+.carouselDot:focus-visible {
+  outline: 3px solid var(--workLink);
+  outline-offset: 2px;
+}
+
+.carouselDots {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.carouselDot {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.carouselDot::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--workMuted);
+  opacity: 0.55;
+}
+
+.carouselDot[aria-current='true']::before {
+  width: 12px;
+  height: 12px;
+  background: var(--workLink);
+  opacity: 1;
+}
+
+.carouselCaption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--workMuted);
+}
+
+.projFacts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 16px;
+  padding: 20px 0;
+  border-block: 1px solid var(--workBorder);
+}
+
+.projFactLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--workMuted);
+}
+
+.projFactValue {
+  font-weight: 600;
+}
+
+.projSec {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.projSec h2 {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.projSec p {
+  max-width: 68ch;
+}
+
+.projBuilt {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 20px;
+}
+
+.projBuiltCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--workBorder);
+  border-radius: 12px;
+}
+
+.projBuiltCard h3 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.projBuiltCard li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.9375rem;
+}
+
+.projBuiltCard li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 6px;
+  height: 2px;
+  background: var(--workLink);
+}
+
+.projWalk {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 24px;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid var(--workBorder);
+  border-radius: 12px;
+}
+
+.projWalkImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--workBorder);
+  border-radius: 10px;
+}
+
+.projWalkText {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.projWalkText h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+/* Keeps the pager clear of the floating nav button on phones. */
+@media (max-width: 767px) {
+  .projDetail {
+    padding-bottom: 72px;
+  }
+}
+
+.projPager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--workBorder);
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 560px) {
+  .projWalk {
+    grid-template-columns: 1fr;
+  }
+
+  .projWalkImg {
+    max-width: 190px;
+  }
+}
+/* PROJECT DETAIL PAGE END */
 
 .APIDemoSection {
   grid-area: APIDemo;
@@ -1210,7 +1671,7 @@ a.footer-icon {
     height: 45svh;
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
     z-index: 2;
   }
 
@@ -1299,6 +1760,11 @@ a.footer-icon {
 
   .main__action {
     margin-top: 0;
+  }
+
+  /* The sticky nav bar is visible from here up. Anchored sections need to clear it (see .workGroup). */
+  :root {
+    --stickyNavH: 72px;
   }
 
   .navUL {
@@ -1475,7 +1941,7 @@ a.footer-icon {
     height: 45svh;
     display: flex;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: space-around;
     z-index: 2;
   }
 }
